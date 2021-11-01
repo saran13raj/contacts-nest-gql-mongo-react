@@ -1,0 +1,20 @@
+.header {
+	position: sticky;
+	top: 0;
+	width: 100vw;
+	background: linear-gradient(-270deg, rgb(87, 31, 188), rgb(221, 67, 44));
+	color: white;
+	display: flex;
+	justify-content: space-around;
+	/* align-items: center; */
+	padding: 20px;
+}
+
+.header__home {
+	text-decoration: none;
+	color: #ffffff;
+}
+
+.header__action {
+	/* margin-top: 2%; */
+}

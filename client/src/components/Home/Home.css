@@ -1,0 +1,46 @@
+.home {
+	align-items: center;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.home__contactsList {
+}
+
+.header__add {
+	padding: 20px;
+}
+
+.header__add__title {
+	display: flex;
+	justify-content: space-between;
+}
+
+.header__add__form {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.header__add__detail {
+	display: flex;
+	justify-content: space-between;
+	padding: 15px;
+}
+
+.header__add__button__div {
+	display: flex;
+	justify-content: center;
+}
+
+.header__add__error {
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+}
+
+.header__errorMessage {
+	color: red;
+}
