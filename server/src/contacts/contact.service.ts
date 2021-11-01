@@ -3,12 +3,15 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Logger } from '@nestjs/common';
 
-import { Contact } from './contact.interface';
+// import { Contact } from './contact.interface';
 import { ContactInput, UpdateContactInput } from './contact.input';
+import { Contact, ContactDocument } from './contact.model';
 
 @Injectable()
 export class ContactService {
-  constructor(@InjectModel('Contact') private contactModel: Model<Contact>) {}
+  constructor(
+    @InjectModel('Contact') private contactModel: Model<ContactDocument>,
+  ) {}
 
   async create(createContact: ContactInput): Promise<Contact> {
     Logger.log('Create new contact', 'Service');

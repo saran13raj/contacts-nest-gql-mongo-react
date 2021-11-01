@@ -1,6 +1,6 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 
-import { ContactType } from './contact.dto';
+import { Contact } from './contact.model';
 import { ContactInput, UpdateContactInput } from './contact.input';
 import { ContactService } from './contact.service';
 
@@ -13,17 +13,17 @@ export class ContactResolver {
     return 'test success';
   }
 
-  @Query(() => [ContactType])
+  @Query(() => [Contact])
   async contacts() {
     return await this.contactService.findAll();
   }
 
-  @Query(() => ContactType)
+  @Query(() => Contact)
   async contact(@Args('_id', { type: () => String }) _id: string) {
     return this.contactService.findOneById(_id);
   }
 
-  @Mutation(() => ContactType)
+  @Mutation(() => Contact)
   async createContact(@Args('input') input: ContactInput) {
     return await this.contactService.create(input);
   }
@@ -33,7 +33,7 @@ export class ContactResolver {
     return await this.contactService.delete(_id);
   }
 
-  @Mutation(() => ContactType)
+  @Mutation(() => Contact)
   async updateContact(@Args('data') data: UpdateContactInput) {
     return await this.contactService.updateContact(data);
   }
