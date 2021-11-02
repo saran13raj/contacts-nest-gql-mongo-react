@@ -7,7 +7,8 @@ import JSON from 'graphql-type-json';
 @Schema()
 export class Contact {
   @Field(() => String)
-  _id: MongooseSchema.Types.ObjectId;
+  //   _id: MongooseSchema.Types.ObjectId;
+  _id: string;
 
   @Field()
   @Prop()

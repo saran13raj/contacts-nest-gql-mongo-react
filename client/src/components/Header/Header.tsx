@@ -33,7 +33,8 @@ const Header = () => {
 			name,
 			phone: number,
 			email,
-			picture
+			picture,
+			info: { age: 24, area: 'test area' }
 			// }
 		}
 	});

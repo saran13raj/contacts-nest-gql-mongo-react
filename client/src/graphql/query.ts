@@ -8,6 +8,7 @@ export const FETCH_ALL_CONTACTS_QUERY = gql`
 			phone
 			email
 			picture
+			info
 		}
 	}
 `;
@@ -20,6 +21,7 @@ query FetchOneContact($_id: String!){
       phone
       email
       picture
+      info
     }
   }
 `;

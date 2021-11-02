@@ -3,13 +3,22 @@ import { gql } from '@apollo/client';
 // mutation InsertContact($input: ContactInput!) {
 // createContact(input: $input) {
 export const INSERT_ONE_CONTACT = gql`
-	mutation InsertContact($name: String!, $phone: String!, $email: String!, $picture: String!) {
-		createContact(input: { name: $name, phone: $phone, email: $email, picture: $picture }) {
+	mutation InsertContact(
+		$name: String!
+		$phone: String!
+		$email: String!
+		$picture: String!
+		$info: JSON!
+	) {
+		createContact(
+			input: { name: $name, phone: $phone, email: $email, picture: $picture, info: $info }
+		) {
 			_id
 			name
 			phone
 			email
 			picture
+			info
 		}
 	}
 `;

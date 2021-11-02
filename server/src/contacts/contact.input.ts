@@ -23,7 +23,8 @@ export class ContactInput {
 @InputType()
 export class UpdateContactQueryInput {
   @Field(() => String)
-  _id: MongooseSchema.Types.ObjectId;
+  //   _id: MongooseSchema.Types.ObjectId;
+  _id: string;
 }
 
 @InputType()
