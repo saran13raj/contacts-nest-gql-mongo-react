@@ -2,6 +2,18 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { Redirect, useHistory, useLocation } from 'react-router';
 import { useMutation } from '@apollo/client';
+import 'antd/dist/antd.css';
+import { Button, Input, Tooltip } from 'antd';
+import {
+	CloseOutlined,
+	DeleteOutlined,
+	EditOutlined,
+	InfoCircleOutlined,
+	MailOutlined,
+	MobileOutlined,
+	PictureOutlined,
+	UserOutlined
+} from '@ant-design/icons';
 
 import './ContactView.css';
 import { DELETE_ONE_CONTACT, UPDATE_ONE_CONTACT } from '../../graphql/mutation';
@@ -23,7 +35,7 @@ interface LocationState {
 
 const modalStyles = {
 	content: {
-		height: '350px',
+		height: '430px',
 		width: '600px',
 		marginTop: '100px',
 		marginLeft: 'auto',
@@ -104,13 +116,22 @@ const ContactView = () => {
 	return (
 		<div className='contactView'>
 			<div className='contactView__pic'>
-				<img
-					src={contact.picture ? contact.picture : defaultAvatar}
-					alt='contact pic'
-					width='150'
-					height='150'
-					className='contact__pic--border'
-				/>
+				<div>
+					<img
+						src={contact.picture ? contact.picture : defaultAvatar}
+						alt='contact pic'
+						width='150'
+						height='150'
+						className='contact__pic--border'
+					/>
+				</div>
+				<div
+					className='contactView__update'
+					onClick={() => {
+						setShowUpdateContact(true);
+					}}>
+					<EditOutlined />
+				</div>
 			</div>
 			<div className='contactView__details'>
 				<p className='contactView__details__text'>
@@ -122,59 +143,97 @@ const ContactView = () => {
 				<p className='contactView__details__text'>
 					<strong>Email:</strong> {email ? email : '-'}
 				</p>
-				<div
-					className='contactView__update'
-					onClick={() => {
-						setShowUpdateContact(true);
-					}}>
-					Update
-				</div>
+
 				<div className='contactView__delete' onClick={onDeleteContact}>
-					Delete
+					<DeleteOutlined />
 				</div>
 			</div>
 			<Modal isOpen={showUpdateContact} style={modalStyles}>
 				<div className='header__add'>
 					<div className='header__add__title'>
 						<h2>Please enter the contact details</h2>
-						<button onClick={() => setShowUpdateContact(false)}>Close</button>
+						<Button
+							type='primary'
+							shape='circle'
+							danger
+							icon={<CloseOutlined />}
+							onClick={() => setShowUpdateContact(false)}
+						/>
 					</div>
 					<div className='header__add__form'>
 						<form>
 							<div className='header__add__detail'>
-								<label>Name</label>
-								<input
+								<Input
 									type='text'
+									placeholder='Name'
+									size='middle'
+									prefix={<UserOutlined className='site-form-item-icon' />}
+									suffix={
+										<Tooltip title='Contact Name'>
+											<InfoCircleOutlined
+												style={{ color: 'rgba(0,0,0,.45)' }}
+											/>
+										</Tooltip>
+									}
 									value={name}
 									onChange={(e) => setName(e.target.value)}
 								/>
 							</div>
 							<div className='header__add__detail'>
-								<label>Mobile Number</label>
-								<input
+								<Input
 									type='text'
+									placeholder='Mobile Number'
+									size='middle'
+									prefix={<MobileOutlined className='site-form-item-icon' />}
+									suffix={
+										<Tooltip title='Mobile Number'>
+											<InfoCircleOutlined
+												style={{ color: 'rgba(0,0,0,.45)' }}
+											/>
+										</Tooltip>
+									}
 									value={number}
 									onChange={(e) => setNumber(e.target.value)}
 								/>
 							</div>
 							<div className='header__add__detail'>
-								<label>Email</label>
-								<input
+								<Input
 									type='text'
+									placeholder='Email'
+									size='middle'
+									prefix={<MailOutlined className='site-form-item-icon' />}
+									suffix={
+										<Tooltip title='Email'>
+											<InfoCircleOutlined
+												style={{ color: 'rgba(0,0,0,.45)' }}
+											/>
+										</Tooltip>
+									}
 									value={email}
 									onChange={(e) => setEmail(e.target.value)}
 								/>
 							</div>
 							<div className='header__add__detail'>
-								<label>Profile Picture</label>
-								<input
+								<Input
 									type='text'
+									placeholder='Picture'
+									size='middle'
+									prefix={<PictureOutlined className='site-form-item-icon' />}
+									suffix={
+										<Tooltip title='Profile Picture'>
+											<InfoCircleOutlined
+												style={{ color: 'rgba(0,0,0,.45)' }}
+											/>
+										</Tooltip>
+									}
 									value={picture}
 									onChange={(e) => setPicture(e.target.value)}
 								/>
 							</div>
 							<div className='header__add__button__div'>
-								<button onClick={onUpdateContact}>Update</button>
+								<Button type='primary' shape='round' onClick={onUpdateContact}>
+									Update
+								</Button>
 							</div>
 							<div className='header__add__error'>
 								{showError ? errorMessage() : null}

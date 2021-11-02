@@ -14,6 +14,8 @@
 
 .contactView__pic {
 	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .contactView__details {
@@ -28,16 +30,12 @@
 	display: flex;
 	justify-content: flex-end;
 	position: absolute;
-	top: -80%;
-	left: 80%;
+	top: -40%;
+	left: 90%;
 	cursor: pointer;
 }
 
 .contactView__update {
-	display: flex;
-	justify-content: flex-end;
-	position: absolute;
-	top: -80%;
-	left: 40%;
+	margin-top: 10px;
 	cursor: pointer;
 }

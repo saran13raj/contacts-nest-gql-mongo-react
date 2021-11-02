@@ -2,17 +2,26 @@
 	position: sticky;
 	top: 0;
 	width: 100vw;
-	background: linear-gradient(-270deg, rgb(87, 31, 188), rgb(221, 67, 44));
+	/* background: linear-gradient(-270deg, rgb(87, 31, 188), rgb(221, 67, 44)); */
+	background: linear-gradient(-270deg, #2d46b9, #f037a5);
 	color: white;
 	display: flex;
 	justify-content: space-around;
-	/* align-items: center; */
+	align-items: center;
 	padding: 20px;
+	height: 60px;
 }
 
 .header__home {
+}
+
+.header__title {
 	text-decoration: none;
+}
+
+.header__title__text {
 	color: #ffffff;
+	margin: 0;
 }
 
 .header__action {
