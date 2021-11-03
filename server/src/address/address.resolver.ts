@@ -10,7 +10,7 @@ import {
 import { Address } from './address.model';
 import { AddressInput } from './address.input';
 import { AddressService } from './address.service';
-import { ContactService } from 'src/contacts/contact.service';
+import { ContactService } from '../contacts/contact.service';
 
 @Resolver(() => Address)
 export class AddressResolver {

@@ -3,7 +3,7 @@ import { Document, Schema as MongooseSchema } from 'mongoose';
 import { ObjectType, Field, ID } from '@nestjs/graphql';
 import JSON from 'graphql-type-json';
 
-import { Address } from 'src/address/address.model';
+import { Address } from '../address/address.model';
 
 @ObjectType()
 @Schema()

@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { NestFactory } from '@nestjs/core';
 import { Logger } from '@nestjs/common';
 import * as mongoose from 'mongoose';

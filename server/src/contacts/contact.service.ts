@@ -15,7 +15,7 @@ export class ContactService {
 
   async create(createContact: ContactInput): Promise<Contact> {
     Logger.log('Create new contact', 'Service');
-    console.log(createContact);
+    // console.log(createContact);
     // createContact.info = JSON.parse(createContact.info);
     const createdContact = await this.contactModel.create(createContact);
     // console.log(createdContact);

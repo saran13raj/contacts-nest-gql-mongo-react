@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
 import { ObjectType, Field, ID } from '@nestjs/graphql';
-import { Contact } from 'src/contacts/contact.model';
+import { Contact } from '../contacts/contact.model';
 
 @ObjectType()
 @Schema()
