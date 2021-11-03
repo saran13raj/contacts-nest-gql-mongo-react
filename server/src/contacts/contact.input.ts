@@ -18,6 +18,9 @@ export class ContactInput {
 
   @Field(() => JSON)
   info: object;
+
+  @Field()
+  address: string;
 }
 
 @InputType()

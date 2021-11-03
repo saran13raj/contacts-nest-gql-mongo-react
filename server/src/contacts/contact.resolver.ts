@@ -1,12 +1,26 @@
-import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  ResolveField,
+  Parent,
+} from '@nestjs/graphql';
 
 import { Contact } from './contact.model';
 import { ContactInput, UpdateContactInput } from './contact.input';
 import { ContactService } from './contact.service';
+import { AddressService } from 'src/address/address.service';
+import { Address } from 'src/address/address.model';
+import { AddressLoader } from 'src/address/addressDataLoader';
 
-@Resolver()
+@Resolver(() => Contact)
 export class ContactResolver {
-  constructor(private readonly contactService: ContactService) {}
+  constructor(
+    private readonly contactService: ContactService,
+    private readonly addressService: AddressService,
+    private readonly addressLoader: AddressLoader,
+  ) {}
 
   @Query(() => String)
   async test() {
@@ -26,6 +40,14 @@ export class ContactResolver {
   @Mutation(() => Contact)
   async createContact(@Args('input') input: ContactInput) {
     return await this.contactService.create(input);
+  }
+
+  @ResolveField(() => Address)
+  async address(@Parent() contact: Contact) {
+    const addressId = contact.address._id;
+
+    // return this.addressService.findOneById(contact.address);
+    return this.addressLoader.batchAddressLoader.load(addressId);
   }
 
   @Mutation(() => String)

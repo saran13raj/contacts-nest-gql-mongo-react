@@ -27,6 +27,7 @@
     "@nestjs/mongoose": "^9.0.1",
     "@nestjs/platform-express": "^8.0.0",
     "apollo-server-express": "^3.4.0",
+    "dataloader": "^2.0.0",
     "graphql": "^15.7.1",
     "graphql-type-json": "^0.3.2",
     "mongoose": "^6.0.12",

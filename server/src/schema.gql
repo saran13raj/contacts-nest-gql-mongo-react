@@ -3,12 +3,13 @@
 # ------------------------------------------------------
 
 type Contact {
-  _id: String!
+  _id: ID!
   name: String!
   phone: String!
   email: String!
   picture: String!
   info: JSON!
+  address: Address!
 }
 
 """
@@ -16,16 +17,24 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
 
+type Address {
+  _id: ID!
+  location: String!
+  contacts: [Contact!]!
+}
+
 type Query {
   test: String!
   contacts: [Contact!]!
   contact(_id: String!): Contact!
+  addresses: [Address!]!
 }
 
 type Mutation {
   createContact(input: ContactInput!): Contact!
   deleteContact(_id: String!): String!
   updateContact(data: UpdateContactInput!): Contact!
+  createAddress(input: AddressInput!): Address!
 }
 
 input ContactInput {
@@ -34,6 +43,7 @@ input ContactInput {
   email: String!
   picture: String!
   info: JSON!
+  address: String!
 }
 
 input UpdateContactInput {
@@ -51,4 +61,8 @@ input UpdateContactSetInput {
   email: String
   picture: String
   info: JSON
+}
+
+input AddressInput {
+  location: String!
 }

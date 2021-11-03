@@ -15,6 +15,7 @@ export class ContactService {
 
   async create(createContact: ContactInput): Promise<Contact> {
     Logger.log('Create new contact', 'Service');
+    console.log(createContact);
     // createContact.info = JSON.parse(createContact.info);
     const createdContact = await this.contactModel.create(createContact);
     // console.log(createdContact);
@@ -31,6 +32,13 @@ export class ContactService {
   async findOneById(_id: string): Promise<Contact> {
     Logger.log('find one contact', 'Service');
     const contact = await this.contactModel.findById(_id);
+    // console.log(contact);
+    return contact;
+  }
+
+  async findOneByAddressId(_id: any): Promise<any> {
+    Logger.log('find one by address id', 'Service');
+    const contact = await this.contactModel.find({ address: _id });
     // console.log(contact);
     return contact;
   }

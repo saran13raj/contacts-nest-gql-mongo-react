@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AddressModule } from './address/address.module';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -9,6 +10,7 @@ import { ContactModule } from './contacts/contact.module';
 @Module({
   imports: [
     ContactModule,
+    AddressModule,
     GraphQLModule.forRoot({
       autoSchemaFile: 'src/schema.gql',
     }),

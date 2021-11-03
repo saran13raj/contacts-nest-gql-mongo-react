@@ -1,0 +1,25 @@
+[
+  {
+    "_id": { "$oid": "617f6c648c64fa6edcafb1f3" },
+    "name": "remo",
+    "phone": "+911132334455",
+    "email": "remo.g.com",
+    "picture": "https://images.unsplash.com/photo-1488161628813-04466f872be2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1064&q=80",
+    "info": { "place": "Goa", "sport": "Pickleball" },
+    "__v": 0
+  },
+  {
+    "_id": { "$oid": "617f6c218c64fa6edcafb1f1" },
+    "name": "clark2",
+    "phone": "+911132334455",
+    "email": "clark.gg.com",
+    "picture": "https://images.unsplash.com/photo-1488161628813-04466f872be2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1064&q=80",
+    "info": {
+      "age": 24,
+      "place": "Chennai",
+      "market": "android",
+      "sport": "Table tennis"
+    },
+    "__v": 0
+  }
+]
