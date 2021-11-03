@@ -9,9 +9,17 @@ export const INSERT_ONE_CONTACT = gql`
 		$email: String!
 		$picture: String!
 		$info: JSON!
+		$address: String!
 	) {
 		createContact(
-			input: { name: $name, phone: $phone, email: $email, picture: $picture, info: $info }
+			input: {
+				name: $name
+				phone: $phone
+				email: $email
+				picture: $picture
+				info: $info
+				address: $address
+			}
 		) {
 			_id
 			name
@@ -19,6 +27,19 @@ export const INSERT_ONE_CONTACT = gql`
 			email
 			picture
 			info
+			address {
+				_id
+				location
+			}
+		}
+	}
+`;
+
+export const INSERT_ONE_ADDRESS = gql`
+	mutation InsertAddress($location: String!) {
+		createAddress(input: { location: $location }) {
+			_id
+			location
 		}
 	}
 `;

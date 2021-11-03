@@ -7,6 +7,7 @@ import 'antd/dist/antd.css';
 import { Button, Input, Tooltip } from 'antd';
 import {
 	CloseOutlined,
+	HomeOutlined,
 	InfoCircleOutlined,
 	MailOutlined,
 	MobileOutlined,
@@ -15,11 +16,11 @@ import {
 } from '@ant-design/icons';
 
 import './Header.css';
-import { INSERT_ONE_CONTACT } from '../../graphql/mutation';
+import { INSERT_ONE_ADDRESS, INSERT_ONE_CONTACT } from '../../graphql/mutation';
 
 const modalStyles = {
 	content: {
-		height: '430px',
+		height: '490px',
 		width: '600px',
 		marginTop: '100px',
 		marginLeft: 'auto',
@@ -34,6 +35,8 @@ const Header = () => {
 	const [number, setNumber] = useState('');
 	const [email, setEmail] = useState('');
 	const [picture, setPicture] = useState('');
+	const [location, setLocation] = useState('');
+	const [addressId, setAddressId] = useState('');
 	const [showAddContact, setShowAddContact] = useState(false);
 	const [showError, setShowError] = useState(false);
 
@@ -44,8 +47,15 @@ const Header = () => {
 			phone: number,
 			email,
 			picture,
-			info: { age: 24, area: 'test area' }
+			info: { age: 24, area: 'test area' },
+			address: addressId
 			// }
+		}
+	});
+
+	const [addAddress] = useMutation(INSERT_ONE_ADDRESS, {
+		variables: {
+			location
 		}
 	});
 
@@ -59,7 +69,7 @@ const Header = () => {
 
 	const onAddContact = async (e: any) => {
 		e.preventDefault();
-		if (name.length === 0 || number.length === 0) {
+		if (name.length === 0 || number.length === 0 || location.length === 0) {
 			setShowError(true);
 			return;
 		} else {
@@ -67,12 +77,24 @@ const Header = () => {
 				name,
 				number,
 				email,
-				picture
+				picture,
+				location
 			};
-			console.log(contactObj);
+			console.log('contactObj:::', contactObj);
 
-			await addContact();
+			const addedAddress = await (await addAddress()).data.createAddress;
+			console.log(addedAddress);
+			if (addedAddress) {
+				setAddressId(addedAddress._id);
+				await addContact();
+			}
 			if (data) {
+				setName('');
+				setNumber('');
+				setEmail('');
+				setPicture('');
+				setLocation('');
+				setAddressId('');
 				<Redirect to='/' />;
 			}
 
@@ -82,7 +104,7 @@ const Header = () => {
 	};
 
 	const errorMessage = () => {
-		return <p className='header__errorMessage'>Please enter valid name and number</p>;
+		return <p className='header__errorMessage'>Please enter valid name, number and location</p>;
 	};
 
 	return (
@@ -181,6 +203,23 @@ const Header = () => {
 									}
 									value={picture}
 									onChange={(e) => setPicture(e.target.value)}
+								/>
+							</div>
+							<div className='header__add__detail'>
+								<Input
+									type='text'
+									placeholder='Location'
+									size='middle'
+									prefix={<HomeOutlined className='site-form-item-icon' />}
+									suffix={
+										<Tooltip title='Profile Picture'>
+											<InfoCircleOutlined
+												style={{ color: 'rgba(0,0,0,.45)' }}
+											/>
+										</Tooltip>
+									}
+									value={location}
+									onChange={(e) => setLocation(e.target.value)}
 								/>
 							</div>
 							<div className='header__add__button__div'>

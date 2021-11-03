@@ -57,6 +57,7 @@ const ContactView = () => {
 	const [number, setNumber] = useState(contact.phone);
 	const [email, setEmail] = useState(contact.email);
 	const [picture, setPicture] = useState(contact.picture);
+	const [location1, setLocation1] = useState(contact.address);
 	const [showError, setShowError] = useState(false);
 
 	const defaultAvatar =
@@ -142,6 +143,9 @@ const ContactView = () => {
 				</p>
 				<p className='contactView__details__text'>
 					<strong>Email:</strong> {email ? email : '-'}
+				</p>
+				<p className='contactView__details__text'>
+					<strong>Location:</strong> {location1 ? location1.location : '-'}
 				</p>
 
 				<div className='contactView__delete' onClick={onDeleteContact}>

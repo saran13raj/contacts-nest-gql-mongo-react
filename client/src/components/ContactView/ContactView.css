@@ -30,7 +30,7 @@
 	display: flex;
 	justify-content: flex-end;
 	position: absolute;
-	top: -40%;
+	top: -20%;
 	left: 90%;
 	cursor: pointer;
 }

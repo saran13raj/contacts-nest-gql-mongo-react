@@ -9,6 +9,10 @@ export const FETCH_ALL_CONTACTS_QUERY = gql`
 			email
 			picture
 			info
+			address {
+				_id
+				location
+			}
 		}
 	}
 `;
