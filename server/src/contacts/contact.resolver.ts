@@ -10,15 +10,15 @@ import {
 import { Contact } from './contact.model';
 import { ContactInput, UpdateContactInput } from './contact.input';
 import { ContactService } from './contact.service';
-import { AddressService } from 'src/address/address.service';
-import { Address } from 'src/address/address.model';
-import { AddressLoader } from 'src/address/addressDataLoader';
+import { AddressService } from '../address/address.service';
+import { Address } from '../address/address.model';
+import { AddressLoader } from '../address/addressDataLoader';
 
 @Resolver(() => Contact)
 export class ContactResolver {
   constructor(
     private readonly contactService: ContactService,
-    private readonly addressService: AddressService,
+    // private readonly addressService: AddressService,
     private readonly addressLoader: AddressLoader,
   ) {}
 
@@ -39,6 +39,7 @@ export class ContactResolver {
 
   @Mutation(() => Contact)
   async createContact(@Args('input') input: ContactInput) {
+    // console.log(input);
     return await this.contactService.create(input);
   }
 

@@ -5,9 +5,9 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ContactService } from './contact.service';
 import { ContactResolver } from './contact.resolver';
 import { ContactSchema } from './contact.model';
-import { AddressSchema } from 'src/address/address.model';
-import { AddressService } from 'src/address/address.service';
-import { AddressLoader } from 'src/address/addressDataLoader';
+import { AddressSchema } from '../address/address.model';
+import { AddressService } from '../address/address.service';
+import { AddressLoader } from '../address/addressDataLoader';
 
 @Module({
   imports: [
