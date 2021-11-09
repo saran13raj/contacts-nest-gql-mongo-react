@@ -43,13 +43,13 @@ const modalStyles = {
 	}
 };
 
-Modal.setAppElement('#root');
+if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
 
 const ContactView = () => {
 	const location = useLocation<any>();
 	let history = useHistory();
 
-	console.log(location.state);
+	// console.log(location.state);
 	const contact = location.state.contact;
 
 	const [showUpdateContact, setShowUpdateContact] = useState(false);

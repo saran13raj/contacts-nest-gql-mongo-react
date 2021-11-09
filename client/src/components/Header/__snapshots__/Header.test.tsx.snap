@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component renders Header without crashing 1`] = `
+<div
+  className="header"
+>
+  <div
+    className="header__home"
+  >
+    <a
+      className="header__title"
+      href="/"
+      onClick={[Function]}
+    >
+      <h2
+        className="header__title__text"
+      >
+        Contacts app
+      </h2>
+    </a>
+  </div>
+  <div
+    className="header__action"
+  >
+    <button
+      className="ant-btn ant-btn-round"
+      color="#D5D5D5"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        Add contact
+      </span>
+    </button>
+  </div>
+</div>
+`;

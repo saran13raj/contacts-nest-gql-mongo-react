@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Contact component renders Contact without crashing 1`] = `
+<div
+  className="contact"
+>
+  <a
+    className="contact__link"
+    href="/contact"
+    onClick={[Function]}
+  >
+    <div
+      className="contact__pic"
+    >
+      <img
+        alt="contact pic"
+        className="contact__pic--border"
+        height="60"
+        src="https://www.kindpng.com/picc/m/78-785827_user-profile-avatar-login-account-male-user-icon.png"
+        width="60"
+      />
+    </div>
+    <div
+      className="contact__name"
+    >
+      <p>
+        diablo
+      </p>
+    </div>
+  </a>
+</div>
+`;

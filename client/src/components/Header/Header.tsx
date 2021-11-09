@@ -28,7 +28,7 @@ const modalStyles = {
 	}
 };
 
-Modal.setAppElement('#root');
+if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
 
 const Header = () => {
 	const [name, setName] = useState('');
